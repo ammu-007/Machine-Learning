@@ -1,27 +1,25 @@
-#%%
 import numpy as np
 import matplotlib.pyplot as plt
 
-# %%
+# X contains two numbers and will be the input to our neural network.
+# y contains the product of corrosponding numbers in X.
+# Size of X = 11
+# Size of y = 10
+# This is because X[10] wil be our test input
+
 X = np.array(([2, 9], [1, 5], [3, 6], [5, 10], [4, 2], [10, 10], [2, 6], [9, 5], [8, 8], [12,10], [4,7]), dtype=float)
 y = np.array(([18], [5], [18], [50], [8], [100], [12], [45], [64], [120]), dtype=float)
 
-
-# %%
-X = X/np.max(X, axis = 0)
+X = X/np.max(X, axis = 0)       #Scaling the examples
 y = y/np.max(y, axis = 0)
 
-# %%
 X_train, X_test = np.split(X, [10])
 
-
-# %%
 class neural_network(object):
     def __init__(self):
         self.inputSize = 2
         self.hiddenSize = 3
         self.outputSize = 1
-
         self.W1 = np.random.randn(self.inputSize, self.hiddenSize)
         self.W2 = np.random.randn(self.hiddenSize, self.outputSize)
 
@@ -58,8 +56,6 @@ class neural_network(object):
         print("Input (scaled): \n" + str(X_test))
         print("Output: \n" + str(self.forward(X_test)))
 
-
-# %%
 nn = neural_network()
 count =[]
 losses= []
